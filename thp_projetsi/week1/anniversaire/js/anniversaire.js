@@ -20,11 +20,10 @@ $(function() {
       $(this).text('Happy birthday');
 
       // Lancer un audio disant Happy Birthday
-      
+      $.playSound('http://www.pacdv.com/sounds/applause-sounds/app-5.mp3');
       // Modifier le background de body par une image festive
       $fondpage=$('body');
       $fondpage.css("backgroundImage", "url(http://stuffpoint.com/darth-vader/image/390728-darth-vader-proud-darth-vader.jpg)");
-      //" #000 url("http://stuffpoint.com/darth-vader/image/390728-darth-vader-proud-darth-vader.jpg") no repeat";
       });
     }
 
@@ -38,3 +37,22 @@ $(function() {
 
 
 }); 
+
+
+//DEFINIR FONCTION PLAYSOUND
+
+(function ($) {
+    $.extend({
+        playSound: function () {
+            return $(
+                   '<audio class="sound-player" autoplay="autoplay" style="display:none;">'
+                     + '<source src="' + arguments[0] + '" />'
+                     + '<embed src="' + arguments[0] + '" hidden="true" autostart="true" loop="false"/>'
+                   + '</audio>'
+                 ).appendTo('body');
+        },
+        stopSound: function () {
+            $(".sound-player").remove();
+        }
+    });
+})(jQuery);
