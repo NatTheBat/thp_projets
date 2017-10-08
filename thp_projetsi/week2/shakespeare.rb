@@ -12,7 +12,6 @@ def jean_michel_data(corpus,dictionnaire)
 
 	dictionnaire.each do |i|
 		
-		puts i
 		#On initialise le hash pour le mot du dico i à 0
 		compteur[i] = 0
 
@@ -20,7 +19,6 @@ def jean_michel_data(corpus,dictionnaire)
 		corpus_transformed2.each do |j|
 			if j.include?(i)
 				compteur[i] += 1
-				puts compteur[i]
 			end
 		end
 
