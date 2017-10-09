@@ -32,8 +32,28 @@ def first_word (phrase)
 	phrase_split = phrase.scan(/[\w']+/)[0]
 end
 
-#Fonction titelize
+#Fonction titleize
 def titleize (phrase)
-	phrase.split(' ').map(&:capitalize).join(' ')
+	table_phrase = phrase.split(' ')
+
+	phrase_finale = ""
+	exceptions = ["a","an","on","the","over", "and"] 
+	
+	#Remplir la phrase finale
+
+	table_phrase.each do |i|
+		if exceptions.include?(i)
+			phrase_finale += i + " "
+		else
+			phrase_finale += i.capitalize + " "
+		end
+	end
+
+	phrase_finale.chop!
+
+	phrase_finale[0].upcase + phrase_finale[1..-1]
+
 end
+
+titleize ("david copperfield");
 
